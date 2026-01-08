@@ -38,6 +38,13 @@ const RegisterSchema = z
 
 type RegisterFormValues = z.infer<typeof RegisterSchema>;
 
+/**
+ * Render the registration form UI that validates email, password length, and password confirmation, and submits credentials to the authentication client.
+ *
+ * The component shows inline validation messages, disables actions while submission is in progress, navigates to "/" on successful sign-up, and displays an error toast if sign-up fails.
+ *
+ * @returns The React element tree for the sign-up form.
+ */
 export function RegisterForm() {
   const router = useRouter();
   const form = useForm<RegisterFormValues>({
