@@ -6,8 +6,8 @@ import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import { createTRPCContext } from "@trpc/tanstack-react-query";
 import { useState } from "react";
 import { makeQueryClient } from "./query-client";
-import type { AppRouter } from "./routers/_app";
-export const { TRPCProvider, useTRPC } = createTRPCContext<AppRouter>();
+import type { appRouter } from "./routers/_app";
+export const { TRPCProvider, useTRPC } = createTRPCContext<typeof appRouter>();
 let browserQueryClient: QueryClient;
 function getQueryClient() {
   if (typeof window === "undefined") {
@@ -40,7 +40,7 @@ export function TRPCReactProvider(
   //       render if it suspends and there is no boundary
   const queryClient = getQueryClient();
   const [trpcClient] = useState(() =>
-    createTRPCClient<AppRouter>({
+    createTRPCClient<typeof appRouter>({
       links: [
         httpBatchLink({
           // transformer: superjson, <-- if you use a data transformer
