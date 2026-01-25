@@ -1,5 +1,4 @@
 "use client";
-import { Alert } from "./ui/alert";
 import {
   AlertDialog,
   AlertDialogAction,

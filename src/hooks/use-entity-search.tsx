@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import page from "@/app/(dashboard)/(rest)/credentials/page";
 import { PAGINATION } from "@/config/constants";
 
 interface useEntitySearchProps<
