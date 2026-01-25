@@ -24,7 +24,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import { useHasActiveSubscription } from "@/features/auth/components/subscriptions/hooks/use-subscription";
+import { useHasActiveSubscription } from "@/features/subscriptions/hooks/use-subscription";
 
 const menuItems = [
   {
@@ -87,7 +87,7 @@ export const AppSidebar = () => {
                     >
                       <Link href={item.url} prefetch>
                         <item.icon className="size-4"></item.icon>
-                        <span>{item.title}</span>
+                        <span className="font-semibold">{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -107,7 +107,7 @@ export const AppSidebar = () => {
                 onClick={() => authClient.checkout({ slug: "Nodebase-Pro" })}
               >
                 <StarIcon className="size-4"></StarIcon>
-                <span>Upgrade to Pro</span>
+                <span className="font-bold">Upgrade to Pro</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           )}
@@ -118,7 +118,7 @@ export const AppSidebar = () => {
               onClick={() => authClient.customer.portal()}
             >
               <CreditCardIcon className="size-4"></CreditCardIcon>
-              <span>Billing Portal</span>
+              <span className="font-bold">Billing Portal</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
@@ -134,7 +134,7 @@ export const AppSidebar = () => {
               }}
             >
               <LogOutIcon className="size-4"></LogOutIcon>
-              <span>Sign Out</span>
+              <span className="font-bold">Sign Out</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
