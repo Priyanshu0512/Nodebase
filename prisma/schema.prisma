@@ -102,8 +102,8 @@ model Node {
   workflowId  String
   workflow    Workflow @relation(fields: [workflowId],references: [id], onDelete: Cascade)
 
-  inputConnections Connection[] @relation("fromNode")
-  outputConnections Connection[] @relation("toNode")
+  inputConnections Connection[] @relation("toNode")
+  outputConnections Connection[] @relation("fromNode")
 
   name        String
   type        NodeType
