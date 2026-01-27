@@ -136,7 +136,10 @@ export const WorkflowsEmpty = () => {
   return (
     <>
       {modal}
-      <EmptyView message="No workflows found." onNew={handleCreate}></EmptyView>
+      <EmptyView
+        message="You haven't created any workflows yet. Create your first workflow to get started."
+        onNew={handleCreate}
+      ></EmptyView>
     </>
   );
 };
