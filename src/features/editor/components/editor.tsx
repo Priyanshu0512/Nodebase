@@ -21,6 +21,8 @@ import {
 import "@xyflow/react/dist/style.css";
 import { nodeComponents } from "@/config/node-components";
 import { AddNodeButton } from "@/components/add-node-button";
+import { useSetAtom } from "jotai";
+import { editorAtom } from "../store/atom";
 
 export const Editor = ({ workflowId }: { workflowId: string }) => {
   const { data: workflow } = useSuspenseWorkflow(workflowId);
@@ -43,6 +45,8 @@ export const Editor = ({ workflowId }: { workflowId: string }) => {
     [],
   );
 
+  const setEditor = useSetAtom(editorAtom);
+
   return (
     <div className="size-full">
       <ReactFlow
@@ -52,15 +56,17 @@ export const Editor = ({ workflowId }: { workflowId: string }) => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodeComponents}
+        onInit={setEditor}
         fitView
+        snapGrid={[10, 10]}
+        snapToGrid
+        panOnScroll
+        panOnDrag={false}
+        selectionOnDrag
+
         // proOptions={{ hideAttribution: true }}
       >
-        <Background
-        //   id="1"
-        //   gap={10}
-        //   color="#f1f1f1"
-        //   variant={BackgroundVariant.Dots}
-        />
+        <Background />
         <Controls />
         <MiniMap />
         <Panel position={"top-right"}>
