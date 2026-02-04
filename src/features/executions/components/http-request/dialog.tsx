@@ -34,7 +34,7 @@ import z from "zod";
 
 const formSchema = z.object({
   endpoint: z.url({ message: "Please enter a valid URL" }),
-  method: z.enum(["GET", "POST", " PUT", "PATCH", "DELETE"]),
+  method: z.enum(["GET", "POST", "PUT", "PATCH", "DELETE"]),
   body: z.string().optional(),
 });
 
@@ -42,7 +42,7 @@ interface Props {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   defaultBody?: string;
-  defaultMethod?: "GET" | "POST" | " PUT" | "PATCH" | "DELETE";
+  defaultMethod?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
   defaultEndpoint?: string;
   onSubmit: (values: z.infer<typeof formSchema>) => void;
 }

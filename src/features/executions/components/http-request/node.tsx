@@ -8,7 +8,7 @@ import { FormType, HttpRequestDialog } from "./dialog";
 
 type HttpRequestNodeData = {
   endpoint?: string;
-  method?: "GET" | "POST" | " PUT" | "PATCH" | "DELETE";
+  method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
   body?: string;
   [key: string]: unknown;
 };
