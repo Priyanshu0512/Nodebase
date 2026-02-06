@@ -11,7 +11,7 @@ export const googleFormTriggerExecutor: NodeExecutor<
       status: "loading",
     }),
   );
-  const result = await step.run("manual-trigger", async () => context);
+  const result = await step.run("google-form-trigger", async () => context);
   await publish(
     googleFormTriggerChannel().status({
       nodeId,
