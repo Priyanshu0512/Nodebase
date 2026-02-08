@@ -17,7 +17,7 @@ type GeminiData = {
   userPrompt?: string;
 };
 
-export const geminiTriggerExecutor: NodeExecutor<GeminiData> = async ({
+export const geminiExecutor: NodeExecutor<GeminiData> = async ({
   nodeId,
   data,
   context,

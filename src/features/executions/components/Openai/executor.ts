@@ -17,7 +17,7 @@ type OpenaiData = {
   userPrompt?: string;
 };
 
-export const openaiTriggerExecutor: NodeExecutor<OpenaiData> = async ({
+export const openaiExecutor: NodeExecutor<OpenaiData> = async ({
   nodeId,
   data,
   context,

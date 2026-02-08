@@ -17,7 +17,7 @@ type AnthropicData = {
   userPrompt?: string;
 };
 
-export const anthropicTriggerExecutor: NodeExecutor<AnthropicData> = async ({
+export const anthropicExecutor: NodeExecutor<AnthropicData> = async ({
   nodeId,
   data,
   context,

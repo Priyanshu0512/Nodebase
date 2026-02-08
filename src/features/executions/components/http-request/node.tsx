@@ -77,4 +77,4 @@ export const HttpRequestNode = memo((props: NodeProps<HttpRequestNodeType>) => {
   );
 });
 
-HttpRequestNode.displayName === "HttpRequestNode";
+HttpRequestNode.displayName = "HttpRequestNode";

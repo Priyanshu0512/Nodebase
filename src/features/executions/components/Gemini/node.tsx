@@ -74,4 +74,4 @@ export const GeminiNode = memo((props: NodeProps<GeminiNodeType>) => {
   );
 });
 
-GeminiNode.displayName === "GeminiNode";
+GeminiNode.displayName = "GeminiNode";

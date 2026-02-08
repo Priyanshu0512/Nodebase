@@ -1,19 +1,22 @@
 "use client";
 
 import { Node, NodeProps, useReactFlow } from "@xyflow/react";
-import { memo, useEffect, useState } from "react";
+import { memo, useState } from "react";
 import { BaseExecutionNode } from "../base-execution-node";
-import { GlobeIcon } from "lucide-react";
-import { AnthropicDialog, AnthropicFormValues } from "./dialog";
+import {
+  AnthropicDialog,
+  AnthropicFormValues,
+  AVAILABLE_MODELS,
+} from "./dialog";
 import { useNodeStatus } from "../../hooks/use-node-status";
 import { fetchAnthropicRealtimeToken } from "./action";
 import { ANTHROPIC_CHANNEL_NAME } from "@/inngest/channels/anthropic";
 
 type AnthropicNodeData = {
   variableName?: string;
-  endpoint?: string;
-  method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
-  body?: string;
+  model?: string;
+  systemPrompt?: string;
+  userPrompt?: string;
 };
 
 type AnthropicNodeType = Node<AnthropicNodeData>;
@@ -21,8 +24,8 @@ type AnthropicNodeType = Node<AnthropicNodeData>;
 export const AnthropicNode = memo((props: NodeProps<AnthropicNodeType>) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const nodeData = props.data;
-  const description = nodeData?.endpoint
-    ? `${nodeData.method || "GET"}: ${nodeData.endpoint}`
+  const description = nodeData?.userPrompt
+    ? `${nodeData.model || AVAILABLE_MODELS[0]}: ${nodeData.userPrompt.slice(0, 50)}...`
     : "Not Configured";
 
   const handleOpenSettings = () => setDialogOpen(true);
@@ -74,4 +77,4 @@ export const AnthropicNode = memo((props: NodeProps<AnthropicNodeType>) => {
   );
 });
 
-AnthropicNode.displayName === "AnthropicNode";
+AnthropicNode.displayName = "AnthropicNode";
