@@ -23,8 +23,6 @@ export async function POST(request: NextRequest) {
       livemode: body.livemode,
       raw: body.data?.object,
     };
-    console.log("before execution");
-    console.log(stripeData);
     //trigger the inggest job
     await sendWorkflowExecution({
       workflowId,
