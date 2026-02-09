@@ -24,7 +24,7 @@ model User {
   sessions      Session[]
   accounts      Account[]
   workflows    Workflow[]
-  credential   Credential[]
+  credentials   Credential[]
 
   @@unique([email])
   @@map("user")

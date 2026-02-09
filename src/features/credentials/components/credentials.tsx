@@ -21,7 +21,8 @@ import {
 import { useCredentialsParams } from "../hooks/use-credentials-params";
 import Image from "next/image";
 import { Credential } from "@/generated/prisma/client";
-import { CredentialType } from "../types";
+// import { CredentialType } from "../types";
+import { CredentialType } from "@/generated/prisma/enums";
 
 export const CredentialsList = () => {
   const credentials = useSuspenseCredentials();

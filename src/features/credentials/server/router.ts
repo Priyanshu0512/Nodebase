@@ -79,12 +79,12 @@ export const credentialsRouter = createTRPCRouter({
   getMany: protectedProcedure
     .input(
       z.object({
-        page: z.number().default(PAGINATION.DEFAULT_PAGE_SIZE),
+        page: z.number().default(PAGINATION.DEFAULT_SIZE),
         pageSize: z
           .number()
           .max(PAGINATION.MAX_PAGE_SIZE)
           .min(PAGINATION.MIN_PAGE_SIZE)
-          .default(PAGINATION.DEFAULT_SIZE),
+          .default(PAGINATION.DEFAULT_PAGE_SIZE),
         search: z.string().default(""),
       }),
     )

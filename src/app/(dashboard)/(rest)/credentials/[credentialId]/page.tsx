@@ -13,7 +13,7 @@ interface PageProps {
   params: Promise<{ credentialId: string }>;
 }
 
-const page = async ({ params }: PageProps) => {
+const Page = async ({ params }: PageProps) => {
   await requireAuth();
   const { credentialId } = await params;
   prefetchCredential(credentialId);
@@ -27,9 +27,9 @@ const page = async ({ params }: PageProps) => {
             </Suspense>
           </ErrorBoundary>
         </HydrateClient>
-      </div>{" "}
+      </div>
     </div>
   );
 };
 
-export default page;
+export default Page;

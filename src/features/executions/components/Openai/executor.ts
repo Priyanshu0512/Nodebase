@@ -59,7 +59,7 @@ export const openaiExecutor: NodeExecutor<OpenaiData> = async ({
         status: "error",
       }),
     );
-    throw new NonRetriableError("Gemini node: Credential is missing");
+    throw new NonRetriableError("OpenAI node: Credential is missing");
   }
 
   const systemPrompt = data.systemPrompt
@@ -77,6 +77,12 @@ export const openaiExecutor: NodeExecutor<OpenaiData> = async ({
   });
 
   if (!credential) {
+    await publish(
+      openaiChannel().status({
+        nodeId,
+        status: "error",
+      }),
+    );
     throw new NonRetriableError("OpenAI node: Credential not found");
   }
 

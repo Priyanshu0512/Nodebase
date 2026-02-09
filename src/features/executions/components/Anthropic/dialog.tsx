@@ -76,7 +76,7 @@ export const AnthropicDialog = ({
   onSubmit,
 }: Props) => {
   const { data: credentials, isLoading: isLoadingCredentials } =
-    useCredentialsByType(CredentialType.OPENAI);
+    useCredentialsByType(CredentialType.ANTHROPIC);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
