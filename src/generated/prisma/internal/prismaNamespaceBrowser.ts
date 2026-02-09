@@ -57,7 +57,8 @@ export const ModelName = {
   Verification: 'Verification',
   Workflow: 'Workflow',
   Node: 'Node',
-  Connection: 'Connection'
+  Connection: 'Connection',
+  Credential: 'Credential'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -153,7 +154,8 @@ export const NodeScalarFieldEnum = {
   position: 'position',
   data: 'data',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  credentialId: 'credentialId'
 } as const
 
 export type NodeScalarFieldEnum = (typeof NodeScalarFieldEnum)[keyof typeof NodeScalarFieldEnum]
@@ -171,6 +173,19 @@ export const ConnectionScalarFieldEnum = {
 } as const
 
 export type ConnectionScalarFieldEnum = (typeof ConnectionScalarFieldEnum)[keyof typeof ConnectionScalarFieldEnum]
+
+
+export const CredentialScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  value: 'value',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+} as const
+
+export type CredentialScalarFieldEnum = (typeof CredentialScalarFieldEnum)[keyof typeof CredentialScalarFieldEnum]
 
 
 export const SortOrder = {

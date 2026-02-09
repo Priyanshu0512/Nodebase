@@ -69,8 +69,8 @@ export const WorkflowHeader = ({ disabled }: { disabled?: boolean }) => {
     <>
       {modal}
       <EntityHeader
-        title="worflows"
-        description="something random"
+        title="Workflows"
+        description="Create and manage your workflows"
         disabled={disabled}
         isCreating={createWorkflow.isPending}
         newButtonLabel="New workflow"
