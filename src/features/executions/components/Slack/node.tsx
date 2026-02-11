@@ -11,6 +11,7 @@ import { fetchSlackRealtimeToken } from "./action";
 type SlackNodeData = {
   webhookUrl?: string;
   content?: string;
+  variableName?: string;
 };
 
 type SlackNodeType = Node<SlackNodeData>;
