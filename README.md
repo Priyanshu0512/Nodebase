@@ -15,7 +15,7 @@
 
 ## 🌐 Live Demo
 
-🚀 **Live app**: `https://nodebase-beta-mauve.vercel.app/`
+🚀 **Live app**: (https://nodebase-beta-mauve.vercel.app/)
 
 ---
 
