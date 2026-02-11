@@ -59,3 +59,28 @@ export type Account = Prisma.AccountModel
  * 
  */
 export type Verification = Prisma.VerificationModel
+/**
+ * Model Workflow
+ * 
+ */
+export type Workflow = Prisma.WorkflowModel
+/**
+ * Model Node
+ * 
+ */
+export type Node = Prisma.NodeModel
+/**
+ * Model Connection
+ * 
+ */
+export type Connection = Prisma.ConnectionModel
+/**
+ * Model Credential
+ * 
+ */
+export type Credential = Prisma.CredentialModel
+/**
+ * Model Execution
+ * 
+ */
+export type Execution = Prisma.ExecutionModel
