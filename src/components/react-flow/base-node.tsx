@@ -1,4 +1,8 @@
-import type { ComponentProps, HTMLAttributes } from "react";
+import {
+  forwardRef,
+  type ComponentProps,
+  type HTMLAttributes,
+} from "react";
 
 import { cn } from "@/lib/utils";
 import { NodeStatus } from "./node-status-indicator";
@@ -8,10 +12,12 @@ interface BaseNodeProps extends HTMLAttributes<HTMLDivElement> {
   status?: NodeStatus;
 }
 
-export function BaseNode({ className, status, ...props }: BaseNodeProps) {
-  return (
-    <div
-      className={cn(
+export const BaseNode = forwardRef<HTMLDivElement, BaseNodeProps>(
+  ({ className, status, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
         "bg-card text-card-foreground relative rounded-sm border border-muted-foreground hover:bg-accent",
         // React Flow displays node elements inside of a `NodeWrapper` component,
         // which compiles down to a div with the class `react-flow__node`.
@@ -22,9 +28,9 @@ export function BaseNode({ className, status, ...props }: BaseNodeProps) {
         // "[.react-flow\\_\\_node.selected_&]:shadow-lg",
         className,
       )}
-      tabIndex={0}
-      {...props}
-    >
+        tabIndex={0}
+        {...props}
+      >
       {props.children}
       {status === "error" && (
         <XCircleIcon className="absolute right-0.5 bottom-0.5 size-2 stroke-3 text-red-700" />
@@ -36,8 +42,11 @@ export function BaseNode({ className, status, ...props }: BaseNodeProps) {
         <Loader2Icon className="absolute -right-0.5 -bottom-0.5 size-2 stroke-3 text-blue-700 animate-spin" />
       )}
     </div>
-  );
-}
+    );
+  },
+);
+
+BaseNode.displayName = "BaseNode";
 
 /**
  * A container for a consistent header layout intended to be used inside the
