@@ -33,6 +33,15 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
+/**
+ * Render a login form UI with email/password fields and social sign-in buttons.
+ *
+ * The form validates input using the file's `loginSchema`, submits credentials to
+ * `authClient.signIn.email` with a callback to "/", navigates to the home page on success,
+ * and shows an error toast on failure.
+ *
+ * @returns The JSX element for the login form.
+ */
 export function LoginForm() {
   const router = useRouter();
   const form = useForm<LoginFormValues>({
@@ -42,6 +51,37 @@ export function LoginForm() {
       password: "",
     },
   });
+
+  const signInGithub = async () => {
+    await authClient.signIn.social(
+      {
+        provider: "github",
+      },
+      {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: () => {
+          toast.error("Something went wrong");
+        },
+      },
+    );
+  };
+  const signInGoogle = async () => {
+    await authClient.signIn.social(
+      {
+        provider: "google",
+      },
+      {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: () => {
+          toast.error("Something went wrong");
+        },
+      },
+    );
+  };
 
   const onSubmit = async (values: LoginFormValues) => {
     await authClient.signIn.email(
@@ -57,7 +97,7 @@ export function LoginForm() {
         onError: (ctx) => {
           toast.error(ctx.error.message);
         },
-      }
+      },
     );
   };
 
@@ -80,6 +120,7 @@ export function LoginForm() {
                     type="button"
                     className="w-full"
                     disabled={isPending}
+                    onClick={signInGithub}
                   >
                     <Image
                       alt="Github"
@@ -94,6 +135,7 @@ export function LoginForm() {
                     type="button"
                     className="w-full"
                     disabled={isPending}
+                    onClick={signInGoogle}
                   >
                     <Image
                       alt="Google"

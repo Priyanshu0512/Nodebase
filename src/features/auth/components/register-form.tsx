@@ -39,6 +39,13 @@ const RegisterSchema = z
 
 type RegisterFormValues = z.infer<typeof RegisterSchema>;
 
+/**
+ * Render the registration form UI that validates email, password length, and password confirmation, and submits credentials to the authentication client.
+ *
+ * The component shows inline validation messages, disables actions while submission is in progress, navigates to "/" on successful sign-up, and displays an error toast if sign-up fails.
+ *
+ * @returns The React element tree for the sign-up form.
+ */
 export function RegisterForm() {
   const router = useRouter();
   const form = useForm<RegisterFormValues>({
@@ -49,6 +56,37 @@ export function RegisterForm() {
       confirmPassword: "",
     },
   });
+
+  const signInGithub = async () => {
+    await authClient.signIn.social(
+      {
+        provider: "github",
+      },
+      {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: () => {
+          toast.error("Something went wrong");
+        },
+      },
+    );
+  };
+  const signInGoogle = async () => {
+    await authClient.signIn.social(
+      {
+        provider: "google",
+      },
+      {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: () => {
+          toast.error("Something went wrong");
+        },
+      },
+    );
+  };
 
   const onSubmit = async (values: RegisterFormValues) => {
     await authClient.signUp.email(
@@ -65,7 +103,7 @@ export function RegisterForm() {
         onError: (ctx) => {
           toast.error(ctx.error.message);
         },
-      }
+      },
     );
   };
 
@@ -88,6 +126,7 @@ export function RegisterForm() {
                     type="button"
                     className="w-full"
                     disabled={isPending}
+                    onClick={signInGoogle}
                   >
                     <Image
                       alt="Github"
@@ -95,13 +134,14 @@ export function RegisterForm() {
                       width={20}
                       height={20}
                     />
-                    Continue with Github
+                    Continue with Google
                   </Button>
                   <Button
                     variant={"outline"}
                     type="button"
                     className="w-full"
                     disabled={isPending}
+                    onClick={signInGithub}
                   >
                     <Image
                       alt="Google"
