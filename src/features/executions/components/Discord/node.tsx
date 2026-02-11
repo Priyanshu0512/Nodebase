@@ -12,6 +12,7 @@ type DiscordNodeData = {
   webhookUrl?: string;
   content?: string;
   username?: string;
+  variableName?: string;
 };
 
 type DiscordNodeType = Node<DiscordNodeData>;
