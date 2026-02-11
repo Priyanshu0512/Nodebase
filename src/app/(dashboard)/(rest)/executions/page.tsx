@@ -1,5 +1,6 @@
 import {
   ExecutionsContainer,
+  ExecutionsErrors,
   ExecutionsList,
   ExecutionsLoading,
 } from "@/features/executions/components/executions";
@@ -24,8 +25,8 @@ const page = async ({ searchParams }: Props) => {
   return (
     <ExecutionsContainer>
       <HydrateClient>
-        <ErrorBoundary fallback={<>ExecutionsErrors</>}>
-          <Suspense fallback={<>ExecutionsLoading</>}>
+        <ErrorBoundary fallback={<ExecutionsErrors />}>
+          <Suspense fallback={<ExecutionsLoading />}>
             <ExecutionsList />
           </Suspense>
         </ErrorBoundary>
